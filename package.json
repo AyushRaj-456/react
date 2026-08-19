@@ -1,0 +1,26 @@
+{
+  "name": "react",
+  "version": "1.0.0",
+  "description": "\"it's a pkg manager! json file\"",
+  "keywords": [
+    "gugugaga"
+  ],
+  "homepage": "https://github.com/AyushRaj-456/react#readme",
+  "bugs": {
+    "url": "https://github.com/AyushRaj-456/react/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AyushRaj-456/react.git"
+  },
+  "license": "ISC",
+  "author": "kraken",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "devDependencies": {
+    "parcel": "^2.16.4"
+  }
+}
