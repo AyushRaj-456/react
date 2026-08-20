@@ -1,3 +1,6 @@
+import React from "react";
+import ReactDOM from "react-dom/client";
+
 // nested tags
 // <div id="parentDiv">
 //     <div id="childDiv">
@@ -17,8 +20,8 @@ const parentDiv = React.createElement(
         "div",
         {id:"childDiv"},[ 
         // array of children in parent Div
-        React.createElement("h1", {}, "h1 from a childDiv inside a parentDiv"),
-        React.createElement("h2", {}, "Sibling tag of h1")
+        React.createElement("h1", {key:"child1"}, "h1 from a childDiv inside a parentDiv"),
+        React.createElement("h2", {key:"child2"}, "Sibling tag of h1")
         ])
     );
 

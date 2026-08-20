@@ -16,11 +16,14 @@
   "license": "ISC",
   "author": "kraken",
   "type": "commonjs",
-  "main": "index.js",
   "scripts": {
     "test": "jest"
   },
   "devDependencies": {
     "parcel": "^2.16.4"
+  },
+  "dependencies": {
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8"
   }
 }
