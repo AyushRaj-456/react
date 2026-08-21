@@ -17,12 +17,8 @@
   "author": "kraken",
   "type": "commonjs",
   "scripts": {
-
-    // if you wanna use script to  build the proj, then both
-    // html file and the package.json file should be in same directory
-
-    "start":"parcel Part1/index.html",
-    "build":"parcel build Part1/index.html",
+    "start":"parcel mainIndex.html",
+    "build":"parcel build mainIndex.html",
     "test": "jest"
   },
   "devDependencies": {
@@ -33,3 +29,5 @@
     "react-dom": "^19.2.8"
   }
 }
+
+
