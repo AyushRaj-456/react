@@ -739,9 +739,93 @@ const jsxHeading = /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h1", {
 }, void 0, false, {
     fileName: "mainApp.js",
     lineNumber: 10,
-    columnNumber: 20
+    columnNumber: 21
 }, undefined);
+// React functional component
+const FunComponent = ()=>{
+    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+        children: "This is a div written using react functional component."
+    }, void 0, false, {
+        fileName: "mainApp.js",
+        lineNumber: 14,
+        columnNumber: 12
+    }, undefined);
+};
+_c = FunComponent;
 root.render(jsxHeading);
+/*
+const Temp = FunComponent
+root.render(<temp/>); // this'll throw error
+root.render(<Temp/>); // this will not throw any error
+root.render(<FunComponent/>); // this is how we can render functional component using </>
+*/ // lets put component inside a component
+const Comp1 = ()=>{
+    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h1", {
+        children: "This is component 1."
+    }, void 0, false, {
+        fileName: "mainApp.js",
+        lineNumber: 29,
+        columnNumber: 12
+    }, undefined);
+};
+_c1 = Comp1;
+const Comp2 = ()=>{
+    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(Comp1, {}, void 0, false, {
+        fileName: "mainApp.js",
+        lineNumber: 33,
+        columnNumber: 5
+    }, undefined);
+    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+        children: "This is Component 2, and what you are reading above this line, is nothing but NESTING of components"
+    }, void 0, false, {
+        fileName: "mainApp.js",
+        lineNumber: 35,
+        columnNumber: 13
+    }, undefined);
+};
+_c2 = Comp2;
+// nested components is also known as Component Composition!!
+root.render(/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(Comp2, {}, void 0, false, {
+    fileName: "mainApp.js",
+    lineNumber: 39,
+    columnNumber: 13
+}, undefined));
+//Can we put element inside a component ? Yes
+let name = "abcd";
+const Comp3 = ()=>{
+    // to write js code inside a componenet we should use {}
+    return(// <> </> is a react fragment 
+    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
+        children: [
+            name,
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h3", {
+                children: 300
+            }, void 0, false, {
+                fileName: "mainApp.js",
+                lineNumber: 51,
+                columnNumber: 13
+            }, undefined),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h1", {
+                children: "This is a component and it contains javascript or react element"
+            }, void 0, false, {
+                fileName: "mainApp.js",
+                lineNumber: 53,
+                columnNumber: 13
+            }, undefined)
+        ]
+    }, void 0, true));
+};
+_c3 = Comp3;
+root.render(/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(Comp3, {}, void 0, false, {
+    fileName: "mainApp.js",
+    lineNumber: 60,
+    columnNumber: 13
+}, undefined));
+var _c, _c1, _c2, _c3;
+$RefreshReg$(_c, "FunComponent");
+$RefreshReg$(_c1, "Comp1");
+$RefreshReg$(_c2, "Comp2");
+$RefreshReg$(_c3, "Comp3");
 
   $parcel$ReactRefreshHelpers$a15c.postlude(module);
 } finally {
