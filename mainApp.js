@@ -1,60 +1,76 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 
-const root = ReactDOM.createRoot(document.getElementById("root"));
-
-// core react
-const heading = React.createElement("h1", {id:"heading1"}, "Rendered heading!");
-
-// jsx syntax for react
-const jsxHeading =( <h1 id="heading2">Heading written using jsx syntax in js</h1>);
-
-// React functional component
-const FunComponent = () => {
-    return <div>This is a div written using react functional component.</div>
-};
-root.render(jsxHeading)
-
 /*
-const Temp = FunComponent
-root.render(<temp/>); // this'll throw error
-root.render(<Temp/>); // this will not throw any error
-root.render(<FunComponent/>); // this is how we can render functional component using </>
+    - Main Web Page
+        - Header
+            - Logo
+            - Navigation Links
+        - Body
+            - Search 
+            - Restro Container
+                - Restro Cards
+                    - image
+                    - name
+                    - star rating
+                    - time to reach
+
+            - Footers
+                - Required Links
+                - Details About the Org
 */
-
-
-// lets put component inside a component
-
-const Comp1 = () => {
-    return <h1>This is component 1.</h1>
-};
-
-const Comp2 = () => {
-    <Comp1/>
-
-    return (<div>This is Component 2, and what you are reading 
-        above this line, is nothing but NESTING of components</div>)
-};
-// nested components is also known as Component Composition!!
-root.render(<Comp2/>);
-
-//Can we put element inside a component ? Yes
-
-let name = "abcd";
-const Comp3 = () => {
-    
-    // to write js code inside a componenet we should use {}
+const Header = () => {
     return (
-        // <> </> is a react fragment 
-        <>
-            {name}
-            <h3>{100 + 200}</h3>
+        <div className="header">
+            <div className="logoContainer">
+                <img className="logo" src ="https://img.magnific.com/premium-vector/food-logo-vector-design-template_600323-3904.jpg?semt=ais_hybrid&w=740&q=80"></img>
+            </div>
 
-            <h1>This is a component and it contains javascript or 
-            react element</h1>
-        
-        </>  
+            <div className="navItems">
+                <ul className="headerLinks">
+                    <li>Home</li>
+                    <li>About Us</li>
+                    <li>Cart</li>
+                    <li>Login</li>
+
+                </ul>
+            </div>
+        </div>
+    )
+}
+
+const RestroCard = () => {
+    return (
+        <div className="restroCard">
+            <img className="restroImg" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcShMjn9-J45-FXvYls5CnQv8BhVhW368IViY5GLBOlU9g&s=10" ></img>
+            <h4 className="restroCardName">Restro name</h4>
+            <p className="pronouns">Biryani, Tasty, Good Quality</p>
+            <p className="starRating"> 4.4 ↗</p>
+            <h6 className="timeTaken"> 22 Mins</h6>
+        </div>
+    )
+}
+
+const Body = () => {
+    return (
+        <div className="body">
+            <div className="searchBar"> Search </div>
+            <div className="restroContainer">
+                <RestroCard/>
+                <RestroCard/> 
+            </div>
+        </div>
+    )
+}
+
+const AppLayout = () => {
+    return (
+        <div className="App">
+            <Header/>
+            <Body/>
+        </div>
     )
 };
 
-root.render(<Comp3/>);
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(<AppLayout/>);

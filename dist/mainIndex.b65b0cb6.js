@@ -727,105 +727,218 @@ var _react = require("react");
 var _reactDefault = parcelHelpers.interopDefault(_react);
 var _client = require("react-dom/client");
 var _clientDefault = parcelHelpers.interopDefault(_client);
-const root = (0, _clientDefault.default).createRoot(document.getElementById("root"));
-// core react
-const heading = /*#__PURE__*/ (0, _reactDefault.default).createElement("h1", {
-    id: "heading1"
-}, "Rendered heading!");
-// jsx syntax for react
-const jsxHeading = /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h1", {
-    id: "heading2",
-    children: "Heading written using jsx syntax in js"
-}, void 0, false, {
-    fileName: "mainApp.js",
-    lineNumber: 10,
-    columnNumber: 21
-}, undefined);
-// React functional component
-const FunComponent = ()=>{
-    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-        children: "This is a div written using react functional component."
-    }, void 0, false, {
-        fileName: "mainApp.js",
-        lineNumber: 14,
-        columnNumber: 12
-    }, undefined);
-};
-_c = FunComponent;
-root.render(jsxHeading);
 /*
-const Temp = FunComponent
-root.render(<temp/>); // this'll throw error
-root.render(<Temp/>); // this will not throw any error
-root.render(<FunComponent/>); // this is how we can render functional component using </>
-*/ // lets put component inside a component
-const Comp1 = ()=>{
-    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h1", {
-        children: "This is component 1."
-    }, void 0, false, {
-        fileName: "mainApp.js",
-        lineNumber: 29,
-        columnNumber: 12
-    }, undefined);
-};
-_c1 = Comp1;
-const Comp2 = ()=>{
-    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(Comp1, {}, void 0, false, {
-        fileName: "mainApp.js",
-        lineNumber: 33,
-        columnNumber: 5
-    }, undefined);
+    - Main Web Page
+        - Header
+            - Logo
+            - Navigation Links
+        - Body
+            - Search 
+            - Restro Container
+                - Restro Cards
+                    - image
+                    - name
+                    - star rating
+                    - time to reach
+
+            - Footers
+                - Required Links
+                - Details About the Org
+*/ const Header = ()=>{
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-        children: "This is Component 2, and what you are reading above this line, is nothing but NESTING of components"
-    }, void 0, false, {
-        fileName: "mainApp.js",
-        lineNumber: 35,
-        columnNumber: 13
-    }, undefined);
-};
-_c2 = Comp2;
-// nested components is also known as Component Composition!!
-root.render(/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(Comp2, {}, void 0, false, {
-    fileName: "mainApp.js",
-    lineNumber: 39,
-    columnNumber: 13
-}, undefined));
-//Can we put element inside a component ? Yes
-let name = "abcd";
-const Comp3 = ()=>{
-    // to write js code inside a componenet we should use {}
-    return(// <> </> is a react fragment 
-    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
+        className: "header",
         children: [
-            name,
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h3", {
-                children: 300
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                className: "logoContainer",
+                children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("img", {
+                    className: "logo",
+                    src: "https://img.magnific.com/premium-vector/food-logo-vector-design-template_600323-3904.jpg?semt=ais_hybrid&w=740&q=80"
+                }, void 0, false, {
+                    fileName: "mainApp.js",
+                    lineNumber: 26,
+                    columnNumber: 17
+                }, undefined)
             }, void 0, false, {
                 fileName: "mainApp.js",
-                lineNumber: 51,
+                lineNumber: 25,
                 columnNumber: 13
             }, undefined),
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h1", {
-                children: "This is a component and it contains javascript or react element"
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                className: "navItems",
+                children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("ul", {
+                    className: "headerLinks",
+                    children: [
+                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
+                            children: "Home"
+                        }, void 0, false, {
+                            fileName: "mainApp.js",
+                            lineNumber: 31,
+                            columnNumber: 21
+                        }, undefined),
+                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
+                            children: "About Us"
+                        }, void 0, false, {
+                            fileName: "mainApp.js",
+                            lineNumber: 32,
+                            columnNumber: 21
+                        }, undefined),
+                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
+                            children: "Cart"
+                        }, void 0, false, {
+                            fileName: "mainApp.js",
+                            lineNumber: 33,
+                            columnNumber: 21
+                        }, undefined),
+                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
+                            children: "Login"
+                        }, void 0, false, {
+                            fileName: "mainApp.js",
+                            lineNumber: 34,
+                            columnNumber: 21
+                        }, undefined)
+                    ]
+                }, void 0, true, {
+                    fileName: "mainApp.js",
+                    lineNumber: 30,
+                    columnNumber: 17
+                }, undefined)
             }, void 0, false, {
                 fileName: "mainApp.js",
-                lineNumber: 53,
+                lineNumber: 29,
                 columnNumber: 13
             }, undefined)
         ]
-    }, void 0, true));
+    }, void 0, true, {
+        fileName: "mainApp.js",
+        lineNumber: 24,
+        columnNumber: 9
+    }, undefined);
 };
-_c3 = Comp3;
-root.render(/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(Comp3, {}, void 0, false, {
+_c = Header;
+const RestroCard = ()=>{
+    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+        className: "restroCard",
+        children: [
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("img", {
+                className: "restroImg",
+                src: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcShMjn9-J45-FXvYls5CnQv8BhVhW368IViY5GLBOlU9g&s=10"
+            }, void 0, false, {
+                fileName: "mainApp.js",
+                lineNumber: 45,
+                columnNumber: 13
+            }, undefined),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h4", {
+                className: "restroCardName",
+                children: "Restro name"
+            }, void 0, false, {
+                fileName: "mainApp.js",
+                lineNumber: 46,
+                columnNumber: 13
+            }, undefined),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
+                className: "pronouns",
+                children: "Biryani, Tasty, Good Quality"
+            }, void 0, false, {
+                fileName: "mainApp.js",
+                lineNumber: 47,
+                columnNumber: 13
+            }, undefined),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
+                className: "starRating",
+                children: " 4.4 \u2197"
+            }, void 0, false, {
+                fileName: "mainApp.js",
+                lineNumber: 48,
+                columnNumber: 13
+            }, undefined),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h6", {
+                className: "timeTaken",
+                children: " 22 Mins"
+            }, void 0, false, {
+                fileName: "mainApp.js",
+                lineNumber: 49,
+                columnNumber: 13
+            }, undefined)
+        ]
+    }, void 0, true, {
+        fileName: "mainApp.js",
+        lineNumber: 44,
+        columnNumber: 9
+    }, undefined);
+};
+_c1 = RestroCard;
+const Body = ()=>{
+    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+        className: "body",
+        children: [
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                className: "searchBar",
+                children: " Search "
+            }, void 0, false, {
+                fileName: "mainApp.js",
+                lineNumber: 57,
+                columnNumber: 13
+            }, undefined),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                className: "restroContainer",
+                children: [
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(RestroCard, {}, void 0, false, {
+                        fileName: "mainApp.js",
+                        lineNumber: 59,
+                        columnNumber: 17
+                    }, undefined),
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(RestroCard, {}, void 0, false, {
+                        fileName: "mainApp.js",
+                        lineNumber: 60,
+                        columnNumber: 17
+                    }, undefined)
+                ]
+            }, void 0, true, {
+                fileName: "mainApp.js",
+                lineNumber: 58,
+                columnNumber: 13
+            }, undefined)
+        ]
+    }, void 0, true, {
+        fileName: "mainApp.js",
+        lineNumber: 56,
+        columnNumber: 9
+    }, undefined);
+};
+_c2 = Body;
+const AppLayout = ()=>{
+    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+        className: "App",
+        children: [
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(Header, {}, void 0, false, {
+                fileName: "mainApp.js",
+                lineNumber: 69,
+                columnNumber: 13
+            }, undefined),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(Body, {}, void 0, false, {
+                fileName: "mainApp.js",
+                lineNumber: 70,
+                columnNumber: 13
+            }, undefined)
+        ]
+    }, void 0, true, {
+        fileName: "mainApp.js",
+        lineNumber: 68,
+        columnNumber: 9
+    }, undefined);
+};
+_c3 = AppLayout;
+const root = (0, _clientDefault.default).createRoot(document.getElementById("root"));
+root.render(/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(AppLayout, {}, void 0, false, {
     fileName: "mainApp.js",
-    lineNumber: 60,
+    lineNumber: 76,
     columnNumber: 13
 }, undefined));
 var _c, _c1, _c2, _c3;
-$RefreshReg$(_c, "FunComponent");
-$RefreshReg$(_c1, "Comp1");
-$RefreshReg$(_c2, "Comp2");
-$RefreshReg$(_c3, "Comp3");
+$RefreshReg$(_c, "Header");
+$RefreshReg$(_c1, "RestroCard");
+$RefreshReg$(_c2, "Body");
+$RefreshReg$(_c3, "AppLayout");
 
   $parcel$ReactRefreshHelpers$a15c.postlude(module);
 } finally {

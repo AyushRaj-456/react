@@ -1,0 +1,61 @@
+.header {
+  border: 1px solid #000;
+  justify-content: space-between;
+  margin: 5px;
+  display: flex;
+}
+
+.logo {
+  width: 110px;
+}
+
+.headerLinks {
+  display: flex;
+}
+
+.headerLinks li {
+  margin: 10px 20px;
+  font-size: 15px;
+  list-style: none;
+}
+
+.restroContainer {
+  display: flex;
+}
+
+.searchBar {
+  margin: 5px;
+}
+
+.restroImg {
+  width: 100px;
+  height: 65px;
+}
+
+.restroCard {
+  border: 1px solid red;
+  width: 100px;
+  height: 160px;
+  margin: 5px;
+  padding: 10px;
+}
+
+.restroCard h4 {
+  margin: 5px;
+}
+
+.restroCard p {
+  margin: 5px;
+  font-size: 10px;
+}
+
+.timeTaken {
+  color: #0b92f3;
+  border: 1px solid #0b92f3;
+  border-radius: 10%;
+  margin: 0 0 0 5px;
+  padding: 2px;
+  font-size: 9px;
+  display: inline-block;
+}
+/*# sourceMappingURL=mainIndex.9c43dbcb.css.map */
