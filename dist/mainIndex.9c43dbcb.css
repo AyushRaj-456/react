@@ -20,6 +20,7 @@
 }
 
 .restroContainer {
+  flex-wrap: wrap;
   display: flex;
 }
 
@@ -33,11 +34,15 @@
 }
 
 .restroCard {
-  border: 1px solid red;
   width: 100px;
-  height: 160px;
+  min-height: 160px;
   margin: 5px;
   padding: 10px;
+}
+
+.restroCard:hover {
+  cursor: pointer;
+  border: 1px solid red;
 }
 
 .restroCard h4 {

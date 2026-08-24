@@ -815,7 +815,7 @@ var _clientDefault = parcelHelpers.interopDefault(_client);
     }, undefined);
 };
 _c = Header;
-const RestroCard = ()=>{
+const RestroCard = (props)=>{
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
         className: "restroCard",
         children: [
@@ -829,7 +829,7 @@ const RestroCard = ()=>{
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h4", {
                 className: "restroCardName",
-                children: "Restro name"
+                children: props.restroCardName
             }, void 0, false, {
                 fileName: "mainApp.js",
                 lineNumber: 46,
@@ -837,7 +837,7 @@ const RestroCard = ()=>{
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
                 className: "pronouns",
-                children: "Biryani, Tasty, Good Quality"
+                children: props.pronouns
             }, void 0, false, {
                 fileName: "mainApp.js",
                 lineNumber: 47,
@@ -845,7 +845,7 @@ const RestroCard = ()=>{
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
                 className: "starRating",
-                children: " 4.4 \u2197"
+                children: props.starRating
             }, void 0, false, {
                 fileName: "mainApp.js",
                 lineNumber: 48,
@@ -853,7 +853,7 @@ const RestroCard = ()=>{
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h6", {
                 className: "timeTaken",
-                children: " 22 Mins"
+                children: props.timetaken
             }, void 0, false, {
                 fileName: "mainApp.js",
                 lineNumber: 49,
@@ -882,14 +882,44 @@ const Body = ()=>{
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
                 className: "restroContainer",
                 children: [
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(RestroCard, {}, void 0, false, {
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(RestroCard, {
+                        restroCardName: "NiksFood",
+                        pronouns: "Non Veg",
+                        starRating: "4.9",
+                        timetaken: "14 Minutes"
+                    }, void 0, false, {
                         fileName: "mainApp.js",
-                        lineNumber: 59,
+                        lineNumber: 63,
                         columnNumber: 17
                     }, undefined),
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(RestroCard, {}, void 0, false, {
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(RestroCard, {
+                        restroCardName: "KFC India",
+                        pronouns: "Non Veg",
+                        starRating: "4.2",
+                        timetaken: "21 Minutes"
+                    }, void 0, false, {
                         fileName: "mainApp.js",
-                        lineNumber: 60,
+                        lineNumber: 64,
+                        columnNumber: 17
+                    }, undefined),
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(RestroCard, {
+                        restroCardName: "Class Of Glass",
+                        pronouns: "Fried Finger, Crackable Glass Cake, Juice",
+                        starRating: "3.9",
+                        timetaken: "44 Minutes"
+                    }, void 0, false, {
+                        fileName: "mainApp.js",
+                        lineNumber: 65,
+                        columnNumber: 17
+                    }, undefined),
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(RestroCard, {
+                        restroCardName: "Biryani World",
+                        pronouns: "Non Veg, Chicken, Hotty Biryani",
+                        starRating: "4.2",
+                        timetaken: "29 Minutes"
+                    }, void 0, false, {
+                        fileName: "mainApp.js",
+                        lineNumber: 66,
                         columnNumber: 17
                     }, undefined)
                 ]
@@ -912,18 +942,18 @@ const AppLayout = ()=>{
         children: [
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(Header, {}, void 0, false, {
                 fileName: "mainApp.js",
-                lineNumber: 69,
+                lineNumber: 76,
                 columnNumber: 13
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(Body, {}, void 0, false, {
                 fileName: "mainApp.js",
-                lineNumber: 70,
+                lineNumber: 77,
                 columnNumber: 13
             }, undefined)
         ]
     }, void 0, true, {
         fileName: "mainApp.js",
-        lineNumber: 68,
+        lineNumber: 75,
         columnNumber: 9
     }, undefined);
 };
@@ -931,7 +961,7 @@ _c3 = AppLayout;
 const root = (0, _clientDefault.default).createRoot(document.getElementById("root"));
 root.render(/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(AppLayout, {}, void 0, false, {
     fileName: "mainApp.js",
-    lineNumber: 76,
+    lineNumber: 83,
     columnNumber: 13
 }, undefined));
 var _c, _c1, _c2, _c3;
