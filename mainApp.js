@@ -1,5 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
+import data from "./data/restro.json" with { type: "json" };
+
+
 
 /*
     - Main Web Page
@@ -40,13 +43,17 @@ const Header = () => {
 }
 
 const RestroCard = (props) => {
+    // console.log(props);
+    // unable to implement the image using imageCode from the json... do it later 
+    const imgUrl = "https://media-assets.swiggy.com/swiggy/image/upload/" + props.restroInfo.info.cloudinaryImageId;
     return (
         <div className="restroCard">
-            <img className="restroImg" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcShMjn9-J45-FXvYls5CnQv8BhVhW368IViY5GLBOlU9g&s=10" ></img>
-            <h4 className="restroCardName">{ props.restroCardName }</h4>
-            <p className="pronouns">{ props.pronouns }</p>
-            <p className="starRating">{ props.starRating }</p>
-            <h6 className="timeTaken">{ props.timetaken }</h6>
+            {/* {const imgUrl = }  */}
+            <img className="restroImg" src={imgUrl}></img>
+            <h4 className="restroCardName">{props.restroInfo.info.name}</h4>
+            <p className="pronouns">{props.restroInfo.info.cuisines.join(", ")}</p>
+            <p className="starRating">{"Rating " + props.restroInfo.info.avgRating}</p>
+            <h6 className="timeTaken">{props.restroInfo.info.sla.slaString}</h6>
         </div>
     )
 }
@@ -59,12 +66,19 @@ const Body = () => {
                 {/* currently i am passing dummy data...
                 but we can get data from the api as an object or an array of object and by passing that 
                 in the functional component as props.. We can use those data...
-                This will make the restroCards truly dynamic! Will do it later*/}
-                <RestroCard restroCardName="NiksFood" pronouns="Non Veg" starRating="4.9" timetaken="14 Minutes"/>
-                <RestroCard restroCardName="KFC India" pronouns="Non Veg" starRating="4.2" timetaken="21 Minutes"/> 
-                <RestroCard restroCardName="Class Of Glass" pronouns="Fried Finger, Crackable Glass Cake, Juice" starRating="3.9" timetaken="44 Minutes"/>
-                <RestroCard restroCardName="Biryani World" pronouns="Non Veg, Chicken, Hotty Biryani" starRating="4.2" timetaken="29 Minutes"/> 
+                This will make the restroCards truly dynamic! Will do it later.
                 
+                This concept is called Config driven UI*/}
+
+                {/* <RestroCard restroInfo={data.restaurants[0]}/> */
+                    data.restaurants.map((restaurants) => {
+
+                        return (<RestroCard
+                            key={restaurants.info.id} 
+                            restroInfo={restaurants}
+                        />)
+                    })    
+                }
             </div>
         </div>
     )
@@ -81,3 +95,5 @@ const AppLayout = () => {
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(<AppLayout/>);
+
+// console.log(data);

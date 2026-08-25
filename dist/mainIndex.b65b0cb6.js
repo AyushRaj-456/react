@@ -727,6 +727,8 @@ var _react = require("react");
 var _reactDefault = parcelHelpers.interopDefault(_react);
 var _client = require("react-dom/client");
 var _clientDefault = parcelHelpers.interopDefault(_client);
+var _restroJson = require("./data/restro.json");
+var _restroJsonDefault = parcelHelpers.interopDefault(_restroJson);
 /*
     - Main Web Page
         - Header
@@ -755,12 +757,12 @@ var _clientDefault = parcelHelpers.interopDefault(_client);
                     src: "https://img.magnific.com/premium-vector/food-logo-vector-design-template_600323-3904.jpg?semt=ais_hybrid&w=740&q=80"
                 }, void 0, false, {
                     fileName: "mainApp.js",
-                    lineNumber: 26,
+                    lineNumber: 29,
                     columnNumber: 17
                 }, undefined)
             }, void 0, false, {
                 fileName: "mainApp.js",
-                lineNumber: 25,
+                lineNumber: 28,
                 columnNumber: 13
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -772,97 +774,100 @@ var _clientDefault = parcelHelpers.interopDefault(_client);
                             children: "Home"
                         }, void 0, false, {
                             fileName: "mainApp.js",
-                            lineNumber: 31,
+                            lineNumber: 34,
                             columnNumber: 21
                         }, undefined),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
                             children: "About Us"
                         }, void 0, false, {
                             fileName: "mainApp.js",
-                            lineNumber: 32,
+                            lineNumber: 35,
                             columnNumber: 21
                         }, undefined),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
                             children: "Cart"
                         }, void 0, false, {
                             fileName: "mainApp.js",
-                            lineNumber: 33,
+                            lineNumber: 36,
                             columnNumber: 21
                         }, undefined),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
                             children: "Login"
                         }, void 0, false, {
                             fileName: "mainApp.js",
-                            lineNumber: 34,
+                            lineNumber: 37,
                             columnNumber: 21
                         }, undefined)
                     ]
                 }, void 0, true, {
                     fileName: "mainApp.js",
-                    lineNumber: 30,
+                    lineNumber: 33,
                     columnNumber: 17
                 }, undefined)
             }, void 0, false, {
                 fileName: "mainApp.js",
-                lineNumber: 29,
+                lineNumber: 32,
                 columnNumber: 13
             }, undefined)
         ]
     }, void 0, true, {
         fileName: "mainApp.js",
-        lineNumber: 24,
+        lineNumber: 27,
         columnNumber: 9
     }, undefined);
 };
 _c = Header;
 const RestroCard = (props)=>{
+    // console.log(props);
+    // unable to implement the image using imageCode from the json... do it later 
+    const imgUrl = "https://media-assets.swiggy.com/swiggy/image/upload/" + props.restroInfo.info.cloudinaryImageId;
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
         className: "restroCard",
         children: [
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("img", {
                 className: "restroImg",
-                src: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcShMjn9-J45-FXvYls5CnQv8BhVhW368IViY5GLBOlU9g&s=10"
+                src: imgUrl
             }, void 0, false, {
                 fileName: "mainApp.js",
-                lineNumber: 45,
+                lineNumber: 52,
                 columnNumber: 13
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h4", {
                 className: "restroCardName",
-                children: props.restroCardName
+                children: props.restroInfo.info.name
             }, void 0, false, {
                 fileName: "mainApp.js",
-                lineNumber: 46,
+                lineNumber: 53,
                 columnNumber: 13
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
                 className: "pronouns",
-                children: props.pronouns
+                children: props.restroInfo.info.cuisines.join(", ")
             }, void 0, false, {
                 fileName: "mainApp.js",
-                lineNumber: 47,
+                lineNumber: 54,
                 columnNumber: 13
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
                 className: "starRating",
-                children: props.starRating
+                children: "Rating " + props.restroInfo.info.avgRating
             }, void 0, false, {
                 fileName: "mainApp.js",
-                lineNumber: 48,
+                lineNumber: 55,
                 columnNumber: 13
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h6", {
                 className: "timeTaken",
-                children: props.timetaken
+                children: props.restroInfo.info.sla.slaString
             }, void 0, false, {
                 fileName: "mainApp.js",
-                lineNumber: 49,
+                lineNumber: 56,
                 columnNumber: 13
             }, undefined)
         ]
     }, void 0, true, {
         fileName: "mainApp.js",
-        lineNumber: 44,
+        lineNumber: 50,
         columnNumber: 9
     }, undefined);
 };
@@ -876,62 +881,29 @@ const Body = ()=>{
                 children: " Search "
             }, void 0, false, {
                 fileName: "mainApp.js",
-                lineNumber: 57,
+                lineNumber: 64,
                 columnNumber: 13
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
                 className: "restroContainer",
-                children: [
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(RestroCard, {
-                        restroCardName: "NiksFood",
-                        pronouns: "Non Veg",
-                        starRating: "4.9",
-                        timetaken: "14 Minutes"
-                    }, void 0, false, {
+                children: (0, _restroJsonDefault.default).restaurants.map((restaurants)=>{
+                    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(RestroCard, {
+                        restroInfo: restaurants
+                    }, restaurants.info.id, false, {
                         fileName: "mainApp.js",
-                        lineNumber: 63,
-                        columnNumber: 17
-                    }, undefined),
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(RestroCard, {
-                        restroCardName: "KFC India",
-                        pronouns: "Non Veg",
-                        starRating: "4.2",
-                        timetaken: "21 Minutes"
-                    }, void 0, false, {
-                        fileName: "mainApp.js",
-                        lineNumber: 64,
-                        columnNumber: 17
-                    }, undefined),
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(RestroCard, {
-                        restroCardName: "Class Of Glass",
-                        pronouns: "Fried Finger, Crackable Glass Cake, Juice",
-                        starRating: "3.9",
-                        timetaken: "44 Minutes"
-                    }, void 0, false, {
-                        fileName: "mainApp.js",
-                        lineNumber: 65,
-                        columnNumber: 17
-                    }, undefined),
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(RestroCard, {
-                        restroCardName: "Biryani World",
-                        pronouns: "Non Veg, Chicken, Hotty Biryani",
-                        starRating: "4.2",
-                        timetaken: "29 Minutes"
-                    }, void 0, false, {
-                        fileName: "mainApp.js",
-                        lineNumber: 66,
-                        columnNumber: 17
-                    }, undefined)
-                ]
-            }, void 0, true, {
+                        lineNumber: 76,
+                        columnNumber: 33
+                    }, undefined);
+                })
+            }, void 0, false, {
                 fileName: "mainApp.js",
-                lineNumber: 58,
+                lineNumber: 65,
                 columnNumber: 13
             }, undefined)
         ]
     }, void 0, true, {
         fileName: "mainApp.js",
-        lineNumber: 56,
+        lineNumber: 63,
         columnNumber: 9
     }, undefined);
 };
@@ -942,18 +914,18 @@ const AppLayout = ()=>{
         children: [
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(Header, {}, void 0, false, {
                 fileName: "mainApp.js",
-                lineNumber: 76,
+                lineNumber: 90,
                 columnNumber: 13
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(Body, {}, void 0, false, {
                 fileName: "mainApp.js",
-                lineNumber: 77,
+                lineNumber: 91,
                 columnNumber: 13
             }, undefined)
         ]
     }, void 0, true, {
         fileName: "mainApp.js",
-        lineNumber: 75,
+        lineNumber: 89,
         columnNumber: 9
     }, undefined);
 };
@@ -961,9 +933,9 @@ _c3 = AppLayout;
 const root = (0, _clientDefault.default).createRoot(document.getElementById("root"));
 root.render(/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(AppLayout, {}, void 0, false, {
     fileName: "mainApp.js",
-    lineNumber: 83,
+    lineNumber: 97,
     columnNumber: 13
-}, undefined));
+}, undefined)); // console.log(data);
 var _c, _c1, _c2, _c3;
 $RefreshReg$(_c, "Header");
 $RefreshReg$(_c1, "RestroCard");
@@ -975,7 +947,7 @@ $RefreshReg$(_c3, "AppLayout");
   globalThis.$RefreshReg$ = prevRefreshReg;
   globalThis.$RefreshSig$ = prevRefreshSig;
 }
-},{"react":"jMk1U","react-dom/client":"hrvwu","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi","react/jsx-dev-runtime":"dVPUn"}],"jMk1U":[function(require,module,exports,__globalThis) {
+},{"react":"jMk1U","react-dom/client":"hrvwu","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi","react/jsx-dev-runtime":"dVPUn","./data/restro.json":"d2eWP"}],"jMk1U":[function(require,module,exports,__globalThis) {
 'use strict';
 module.exports = require("a569817e6ea559f6");
 
@@ -19937,6 +19909,9 @@ module.exports = require("ee51401569654d91");
     };
 })();
 
-},{"58362d9d82be395f":"jMk1U"}]},["kX0ZP","lFTtt"], "lFTtt", "parcelRequire77dd", {}, null, null, "http://localhost:1234")
+},{"58362d9d82be395f":"jMk1U"}],"d2eWP":[function(require,module,exports,__globalThis) {
+module.exports = JSON.parse('{"restaurants":[{"info":{"id":"804107","name":"Barbeque Nation","cloudinaryImageId":"da9e6dc00745e08c060d2c7dc25e780c","locality":"MUZAFFARPUR-SHIVMITRA TOWER","areaName":"Kalambagh Road","costForTwo":"\u20B9400 for two","cuisines":["North Indian","Barbecue","Kebabs","Biryani","Street Food","Snacks"],"avgRating":4.2,"parentId":"2438","avgRatingString":"4.2","totalRatingsString":"1.0K+","sla":{"deliveryTime":47,"lastMileTravel":2.3,"serviceability":"SERVICEABLE","slaString":"45-55 mins","lastMileTravelString":"2.3 km","iconType":"ICON_TYPE_EMPTY"},"availability":{"nextCloseTime":"2026-08-25 23:00:00","opened":true},"badges":{"imageBadges":[{"imageId":"newg.png","description":"Premium gourmet restaurant offering an elevated, high-quality food experience."}]},"isOpen":true,"type":"F","badgesV2":{"entityBadges":{"imageBased":{"badgeObject":[{"attributes":{"description":"Premium gourmet restaurant offering an elevated, high-quality food experience.","imageId":"newg.png","theme":""}}]},"textBased":{},"textExtendedBadges":{}}},"aggregatedDiscountInfoV3":{"header":"70% OFF","subHeader":"UPTO \u20B9140","logoCtx":{"text":"BENEFITS"}},"differentiatedUi":{"displayType":"ADS_UI_DISPLAY_TYPE_ENUM_DEFAULT","differentiatedUiMediaDetails":{"lottie":{},"video":{}}},"reviewsSummary":{},"displayType":"RESTAURANT_DISPLAY_TYPE_DEFAULT","restaurantOfferPresentationInfo":{},"externalRatings":{"aggregatedRating":{"rating":"--"}},"ratingsDisplayPreference":"RATINGS_DISPLAY_PREFERENCE_SHOW_SWIGGY","priceComparisonComms":{}},"analytics":{"context":"seo-data-9c2906a2-6278-4b66-a860-77cabf0c95af"},"cta":{"link":"https://www.swiggy.com/city/muzaffarpur/barbeque-nation-shivmitra-tower-kalambagh-road-rest804107","type":"WEBLINK"}},{"info":{"id":"369164","name":"Biryani Maharaj","cloudinaryImageId":"qgthkrhsblq3ruyekmlh","locality":"DRB Mall","areaName":"Motijheel Road","costForTwo":"\u20B9400 for two","cuisines":["Biryani","Chinese","Kebabs","Desserts"],"avgRating":4.3,"parentId":"46846","avgRatingString":"4.3","totalRatingsString":"23K+","sla":{"deliveryTime":27,"lastMileTravel":0.9,"serviceability":"SERVICEABLE","slaString":"25-30 mins","lastMileTravelString":"0.9 km","iconType":"ICON_TYPE_EMPTY"},"availability":{"nextCloseTime":"2026-08-25 23:00:00","opened":true},"badges":{"imageBadges":[{"imageId":"android/static-assets/icons/big_rx.png","description":"bolt!"},{"imageId":"brand_cards/Badges%202026/39_Best%20in%20Biryani2026.png","description":"Top-rated for Biryani, based on user votes."},{"imageId":"brand_cards/Badges%202026/46_Best%20in%20Chinese2026.png","description":"Top-rated for Chinese, based on user votes."},{"imageId":"Rxawards/_CATEGORY-Chinese.png","description":"Top-rated for Chinese, based on user votes."}]},"isOpen":true,"type":"F","badgesV2":{"entityBadges":{"imageBased":{"badgeObject":[{"attributes":{"description":"bolt!","imageId":"android/static-assets/icons/big_rx.png"}},{"attributes":{"description":"Top-rated for Biryani, based on user votes.","imageId":"brand_cards/Badges%202026/39_Best%20in%20Biryani2026.png","theme":""}},{"attributes":{"description":"Top-rated for Chinese, based on user votes.","imageId":"brand_cards/Badges%202026/46_Best%20in%20Chinese2026.png","theme":""}},{"attributes":{"description":"Top-rated for Chinese, based on user votes.","imageId":"Rxawards/_CATEGORY-Chinese.png","theme":""}}]},"textBased":{},"textExtendedBadges":{}}},"aggregatedDiscountInfoV3":{"header":"70% OFF","subHeader":"UPTO \u20B9140","logoCtx":{"text":"BENEFITS"}},"differentiatedUi":{"displayType":"ADS_UI_DISPLAY_TYPE_ENUM_DEFAULT","differentiatedUiMediaDetails":{"lottie":{},"video":{}}},"reviewsSummary":{},"displayType":"RESTAURANT_DISPLAY_TYPE_DEFAULT","restaurantOfferPresentationInfo":{},"externalRatings":{"aggregatedRating":{"rating":"--"}},"ratingsDisplayPreference":"RATINGS_DISPLAY_PREFERENCE_SHOW_SWIGGY","priceComparisonComms":{}},"analytics":{"context":"seo-data-9c2906a2-6278-4b66-a860-77cabf0c95af"},"cta":{"link":"https://www.swiggy.com/city/muzaffarpur/biryani-maharaj-drb-mall-motijheel-road-rest369164","type":"WEBLINK"}},{"info":{"id":"659963","name":"Mishthanpur","cloudinaryImageId":"0a9f7cccbc94b3fb0ea7842be79866c1","locality":"Kakrania complex","areaName":"Mithanpura","costForTwo":"\u20B9250 for two","cuisines":["Sweets","South Indian","Chaat","Desserts","Snacks"],"avgRating":4.4,"veg":true,"parentId":"15658","avgRatingString":"4.4","totalRatingsString":"9.6K+","sla":{"deliveryTime":33,"lastMileTravel":2.3,"serviceability":"SERVICEABLE","slaString":"30-35 mins","lastMileTravelString":"2.3 km","iconType":"ICON_TYPE_EMPTY"},"availability":{"nextCloseTime":"2026-08-25 23:59:00","opened":true},"badges":{"imageBadges":[{"imageId":"brand_cards/Badges%202026/26_Best%20in%20North%20Indian2026.png","description":"Top-rated for North Indian, based on user votes."},{"imageId":"brand_cards/Badges%202026/43_Best%20in%20Cakes%20&%20Desserts2026.png","description":"Top-rated for Cakes & Desserts, based on user votes."},{"imageId":"brand_cards/Badges%202026/57_Best%20in%20Indian%20Sweets2026.png","description":"Top-rated for Indian Sweets, based on user votes."}]},"isOpen":true,"type":"F","badgesV2":{"entityBadges":{"imageBased":{"badgeObject":[{"attributes":{"description":"Top-rated for North Indian, based on user votes.","imageId":"brand_cards/Badges%202026/26_Best%20in%20North%20Indian2026.png","theme":""}},{"attributes":{"description":"Top-rated for Cakes & Desserts, based on user votes.","imageId":"brand_cards/Badges%202026/43_Best%20in%20Cakes%20&%20Desserts2026.png","theme":""}},{"attributes":{"description":"Top-rated for Indian Sweets, based on user votes.","imageId":"brand_cards/Badges%202026/57_Best%20in%20Indian%20Sweets2026.png","theme":""}}]},"textBased":{},"textExtendedBadges":{}}},"aggregatedDiscountInfoV3":{"header":"\u20B950 OFF","subHeader":"ABOVE \u20B9449","discountTag":"FLAT DEAL","logoCtx":{"text":"BENEFITS"}},"differentiatedUi":{"displayType":"ADS_UI_DISPLAY_TYPE_ENUM_DEFAULT","differentiatedUiMediaDetails":{"lottie":{},"video":{}}},"reviewsSummary":{},"displayType":"RESTAURANT_DISPLAY_TYPE_DEFAULT","restaurantOfferPresentationInfo":{},"externalRatings":{"aggregatedRating":{"rating":"--"}},"ratingsDisplayPreference":"RATINGS_DISPLAY_PREFERENCE_SHOW_SWIGGY","priceComparisonComms":{}},"analytics":{"context":"seo-data-9c2906a2-6278-4b66-a860-77cabf0c95af"},"cta":{"link":"https://www.swiggy.com/city/muzaffarpur/mishthanpur-kakrania-complex-mithanpura-rest659963","type":"WEBLINK"}},{"info":{"id":"647660","name":"S.K. Foods & Beverages","cloudinaryImageId":"b2dbab4f3da0e17adcb0c25dcf289ef4","locality":"Damuchak Road","areaName":"Kalambagh Road","costForTwo":"\u20B9450 for two","cuisines":["Sweets","North Indian","South Indian","Chaat","Desserts","Snacks"],"avgRating":4.5,"veg":true,"parentId":"588722","avgRatingString":"4.5","totalRatingsString":"8.5K+","sla":{"deliveryTime":32,"lastMileTravel":3,"serviceability":"SERVICEABLE","slaString":"30-35 mins","lastMileTravelString":"3.0 km","iconType":"ICON_TYPE_EMPTY"},"availability":{"nextCloseTime":"2026-08-25 23:59:00","opened":true},"badges":{"imageBadges":[{"imageId":"brand_cards/Badges%202026/26_Best%20in%20North%20Indian2026.png","description":"Top-rated for North Indian, based on user votes."},{"imageId":"brand_cards/Badges%202026/57_Best%20in%20Indian%20Sweets2026.png","description":"Top-rated for Indian Sweets, based on user votes."}]},"isOpen":true,"type":"F","badgesV2":{"entityBadges":{"imageBased":{"badgeObject":[{"attributes":{"description":"Top-rated for North Indian, based on user votes.","imageId":"brand_cards/Badges%202026/26_Best%20in%20North%20Indian2026.png","theme":""}},{"attributes":{"description":"Top-rated for Indian Sweets, based on user votes.","imageId":"brand_cards/Badges%202026/57_Best%20in%20Indian%20Sweets2026.png","theme":""}}]},"textBased":{},"textExtendedBadges":{}}},"aggregatedDiscountInfoV3":{"header":"20% OFF","subHeader":"UPTO \u20B950","logoCtx":{"text":"BENEFITS"}},"differentiatedUi":{"displayType":"ADS_UI_DISPLAY_TYPE_ENUM_DEFAULT","differentiatedUiMediaDetails":{"lottie":{},"video":{}}},"reviewsSummary":{},"displayType":"RESTAURANT_DISPLAY_TYPE_DEFAULT","restaurantOfferPresentationInfo":{},"externalRatings":{"aggregatedRating":{"rating":"--"}},"ratingsDisplayPreference":"RATINGS_DISPLAY_PREFERENCE_SHOW_SWIGGY","priceComparisonComms":{}},"analytics":{"context":"seo-data-9c2906a2-6278-4b66-a860-77cabf0c95af"},"cta":{"link":"https://www.swiggy.com/city/muzaffarpur/s-k-foods-and-beverages-damuchak-road-kalambagh-road-rest647660","type":"WEBLINK"}},{"info":{"id":"425399","name":"Om Sweets Restaurant & Bakery","cloudinaryImageId":"m3d4gdo9tvmqozqcuhsw","locality":"Dr Arun Shah Lane","areaName":"Muzaffarpur","costForTwo":"\u20B9300 for two","cuisines":["Sweets","South Indian","Chinese","Bakery"],"avgRating":4.3,"veg":true,"parentId":"374074","avgRatingString":"4.3","totalRatingsString":"2.3K+","sla":{"deliveryTime":32,"lastMileTravel":4.3,"serviceability":"SERVICEABLE","slaString":"30-35 mins","lastMileTravelString":"4.3 km","iconType":"ICON_TYPE_EMPTY"},"availability":{"nextCloseTime":"2026-08-25 22:00:00","opened":true},"badges":{},"isOpen":true,"type":"F","badgesV2":{"entityBadges":{"imageBased":{},"textBased":{},"textExtendedBadges":{}}},"aggregatedDiscountInfoV3":{"header":"ITEMS","subHeader":"AT \u20B955","logoCtx":{"text":"BENEFITS"}},"differentiatedUi":{"displayType":"ADS_UI_DISPLAY_TYPE_ENUM_DEFAULT","differentiatedUiMediaDetails":{"lottie":{},"video":{}}},"reviewsSummary":{},"displayType":"RESTAURANT_DISPLAY_TYPE_DEFAULT","restaurantOfferPresentationInfo":{},"externalRatings":{"aggregatedRating":{"rating":"--"}},"ratingsDisplayPreference":"RATINGS_DISPLAY_PREFERENCE_SHOW_SWIGGY","priceComparisonComms":{}},"analytics":{"context":"seo-data-9c2906a2-6278-4b66-a860-77cabf0c95af"},"cta":{"link":"https://www.swiggy.com/city/muzaffarpur/om-sweets-restaurant-and-bakery-dr-arun-shah-lane-muzaffarpur-rest425399","type":"WEBLINK"}},{"info":{"id":"361680","name":"7th Heaven","cloudinaryImageId":"d1pqnrywppnpvky4et9s","locality":"Reliance Trend Mall \\n","areaName":"Tower Chowk","costForTwo":"\u20B9650 for two","cuisines":["Bakery"],"avgRating":3.6,"parentId":"19","avgRatingString":"3.6","totalRatingsString":"1.1K+","sla":{"deliveryTime":31,"lastMileTravel":1.4,"serviceability":"SERVICEABLE","slaString":"30-35 mins","lastMileTravelString":"1.4 km","iconType":"ICON_TYPE_EMPTY"},"availability":{"nextCloseTime":"2026-08-25 21:30:00","opened":true},"badges":{"imageBadges":[{"imageId":"brand_cards/Badges%202026/43_Best%20in%20Cakes%20&%20Desserts2026.png","description":"Top-rated for Cakes & Desserts, based on user votes."}]},"isOpen":true,"type":"F","badgesV2":{"entityBadges":{"imageBased":{"badgeObject":[{"attributes":{"description":"Top-rated for Cakes & Desserts, based on user votes.","imageId":"brand_cards/Badges%202026/43_Best%20in%20Cakes%20&%20Desserts2026.png","theme":""}}]},"textBased":{},"textExtendedBadges":{}}},"aggregatedDiscountInfoV3":{"header":"70% OFF","subHeader":"UPTO \u20B9140","logoCtx":{"text":"BENEFITS"}},"differentiatedUi":{"displayType":"ADS_UI_DISPLAY_TYPE_ENUM_DEFAULT","differentiatedUiMediaDetails":{"lottie":{},"video":{}}},"reviewsSummary":{},"displayType":"RESTAURANT_DISPLAY_TYPE_DEFAULT","restaurantOfferPresentationInfo":{},"externalRatings":{"aggregatedRating":{"rating":"--"}},"ratingsDisplayPreference":"RATINGS_DISPLAY_PREFERENCE_SHOW_SWIGGY","priceComparisonComms":{}},"analytics":{"context":"seo-data-9c2906a2-6278-4b66-a860-77cabf0c95af"},"cta":{"link":"https://www.swiggy.com/city/muzaffarpur/7th-heaven-reliance-trend-mall-tower-chowk-rest361680","type":"WEBLINK"}},{"info":{"id":"119398","name":"Down Town Pizza","cloudinaryImageId":"oc6yuf8oewykxxejixhx","locality":"Musahri","areaName":"Motijheel Road","costForTwo":"\u20B9400 for two","cuisines":["Pizzas","Italian","Snacks"],"avgRating":4.3,"parentId":"74497","avgRatingString":"4.3","totalRatingsString":"8.2K+","sla":{"deliveryTime":32,"lastMileTravel":0.9,"serviceability":"SERVICEABLE","slaString":"30-35 mins","lastMileTravelString":"0.9 km","iconType":"ICON_TYPE_EMPTY"},"availability":{"nextCloseTime":"2026-08-25 22:30:00","opened":true},"badges":{"imageBadges":[{"imageId":"android/static-assets/icons/big_rx.png","description":"bolt!"}]},"isOpen":true,"type":"F","badgesV2":{"entityBadges":{"imageBased":{"badgeObject":[{"attributes":{"description":"bolt!","imageId":"android/static-assets/icons/big_rx.png"}}]},"textBased":{},"textExtendedBadges":{}}},"aggregatedDiscountInfoV3":{"header":"ITEMS","subHeader":"AT \u20B999","logoCtx":{"text":"BENEFITS"}},"differentiatedUi":{"displayType":"ADS_UI_DISPLAY_TYPE_ENUM_DEFAULT","differentiatedUiMediaDetails":{"lottie":{},"video":{}}},"reviewsSummary":{},"displayType":"RESTAURANT_DISPLAY_TYPE_DEFAULT","restaurantOfferPresentationInfo":{},"externalRatings":{"aggregatedRating":{"rating":"--"}},"ratingsDisplayPreference":"RATINGS_DISPLAY_PREFERENCE_SHOW_SWIGGY","priceComparisonComms":{}},"analytics":{"context":"seo-data-9c2906a2-6278-4b66-a860-77cabf0c95af"},"cta":{"link":"https://www.swiggy.com/city/muzaffarpur/down-town-pizza-musahri-motijheel-road-rest119398","type":"WEBLINK"}},{"info":{"id":"121488","name":"Kathi Junction","cloudinaryImageId":"cf7ce41as7je4hwpv3fx","locality":"Mithanpura","areaName":"Kalambagh Chowk","costForTwo":"\u20B9250 for two","cuisines":["rolls","Pizzas","Burgers"],"avgRating":3.8,"parentId":"1935","avgRatingString":"3.8","totalRatingsString":"2.3K+","sla":{"deliveryTime":30,"lastMileTravel":2.2,"serviceability":"SERVICEABLE","slaString":"25-30 mins","lastMileTravelString":"2.2 km","iconType":"ICON_TYPE_EMPTY"},"availability":{"nextCloseTime":"2026-08-25 22:00:00","opened":true},"badges":{},"isOpen":true,"type":"F","badgesV2":{"entityBadges":{"imageBased":{},"textBased":{},"textExtendedBadges":{}}},"aggregatedDiscountInfoV3":{"header":"ITEMS","subHeader":"AT \u20B959","logoCtx":{"text":"BENEFITS"}},"differentiatedUi":{"displayType":"ADS_UI_DISPLAY_TYPE_ENUM_DEFAULT","differentiatedUiMediaDetails":{"lottie":{},"video":{}}},"reviewsSummary":{},"displayType":"RESTAURANT_DISPLAY_TYPE_DEFAULT","restaurantOfferPresentationInfo":{},"externalRatings":{"aggregatedRating":{"rating":"--"}},"ratingsDisplayPreference":"RATINGS_DISPLAY_PREFERENCE_SHOW_SWIGGY","priceComparisonComms":{}},"analytics":{"context":"seo-data-9c2906a2-6278-4b66-a860-77cabf0c95af"},"cta":{"link":"https://www.swiggy.com/city/muzaffarpur/kathi-junction-mithanpura-kalambagh-chowk-rest121488","type":"WEBLINK"}},{"info":{"id":"120234","name":"Food Plaza","cloudinaryImageId":"kyiuy1fyrpc4nfovnuos","locality":"Tilak Maidhan Road \\n","areaName":"Muzaffarpur","costForTwo":"\u20B9400 for two","cuisines":["South Indian","Chinese","Mughlai","Thalis","Desserts"],"avgRating":4.3,"parentId":"3966","avgRatingString":"4.3","totalRatingsString":"4.1K+","sla":{"deliveryTime":35,"lastMileTravel":1.2,"serviceability":"SERVICEABLE","slaString":"35-45 mins","lastMileTravelString":"1.2 km","iconType":"ICON_TYPE_EMPTY"},"availability":{"nextCloseTime":"2026-08-25 22:45:00","opened":true},"badges":{},"isOpen":true,"aggregatedDiscountInfoV2":{},"type":"F","badgesV2":{"entityBadges":{"imageBased":{},"textBased":{},"textExtendedBadges":{}}},"differentiatedUi":{"displayType":"ADS_UI_DISPLAY_TYPE_ENUM_DEFAULT","differentiatedUiMediaDetails":{"lottie":{},"video":{}}},"reviewsSummary":{},"displayType":"RESTAURANT_DISPLAY_TYPE_DEFAULT","restaurantOfferPresentationInfo":{},"externalRatings":{"aggregatedRating":{"rating":"--"}},"ratingsDisplayPreference":"RATINGS_DISPLAY_PREFERENCE_SHOW_SWIGGY","priceComparisonComms":{}},"analytics":{"context":"seo-data-9c2906a2-6278-4b66-a860-77cabf0c95af"},"cta":{"link":"https://www.swiggy.com/city/muzaffarpur/food-plaza-tilak-maidhan-road-muzaffarpur-rest120234","type":"WEBLINK"}},{"info":{"id":"569443","name":"La Pino\'z Pizza","cloudinaryImageId":"ktt110veapzoja5cwgea","locality":"Jubba Sahani Park","areaName":"Muzaffarpur","costForTwo":"\u20B9300 for two","cuisines":["Pizzas","Pastas","Italian","Desserts","Beverages"],"avgRating":4.2,"parentId":"4961","avgRatingString":"4.2","totalRatingsString":"3.4K+","sla":{"deliveryTime":28,"lastMileTravel":1.4,"serviceability":"SERVICEABLE","slaString":"25-30 mins","lastMileTravelString":"1.4 km","iconType":"ICON_TYPE_EMPTY"},"availability":{"nextCloseTime":"2026-08-25 23:00:00","opened":true},"badges":{"imageBadges":[{"imageId":"brand_cards/Badges%202026/72_Best%20in%20Pizza2026.png","description":"Top-rated for Pizza, based on user votes."}]},"isOpen":true,"type":"F","badgesV2":{"entityBadges":{"imageBased":{"badgeObject":[{"attributes":{"description":"Top-rated for Pizza, based on user votes.","imageId":"brand_cards/Badges%202026/72_Best%20in%20Pizza2026.png","theme":""}}]},"textBased":{},"textExtendedBadges":{}}},"aggregatedDiscountInfoV3":{"header":"\u20B975 OFF","subHeader":"ABOVE \u20B9199","discountTag":"FLAT DEAL","logoCtx":{"text":"BENEFITS"}},"differentiatedUi":{"displayType":"ADS_UI_DISPLAY_TYPE_ENUM_DEFAULT","differentiatedUiMediaDetails":{"lottie":{},"video":{}}},"reviewsSummary":{},"displayType":"RESTAURANT_DISPLAY_TYPE_DEFAULT","restaurantOfferPresentationInfo":{},"externalRatings":{"aggregatedRating":{"rating":"--"}},"ratingsDisplayPreference":"RATINGS_DISPLAY_PREFERENCE_SHOW_SWIGGY","priceComparisonComms":{}},"analytics":{"context":"seo-data-9c2906a2-6278-4b66-a860-77cabf0c95af"},"cta":{"link":"https://www.swiggy.com/city/muzaffarpur/la-pinoz-pizza-jubba-sahani-park-muzaffarpur-rest569443","type":"WEBLINK"}},{"info":{"id":"124439","name":"Domino\'s Pizza","cloudinaryImageId":"RX_THUMBNAIL/IMAGES/VENDOR/2026/6/14/04ffabfc-8aca-4bc7-9c15-3df4d37103a5_124439.JPG","locality":"Mithanpura","areaName":"Muzaffarpur","costForTwo":"\u20B9400 for two","cuisines":["Pizzas","Italian","Pastas","Desserts"],"avgRating":4.4,"parentId":"2456","avgRatingString":"4.4","totalRatingsString":"3.1K+","sla":{"deliveryTime":25,"lastMileTravel":1.5,"serviceability":"SERVICEABLE","slaString":"20-25 mins","lastMileTravelString":"1.5 km","iconType":"ICON_TYPE_EMPTY"},"availability":{"nextCloseTime":"2026-08-26 02:59:00","opened":true},"badges":{"imageBadges":[{"imageId":"brand_cards/Badges%202026/72_Best%20in%20Pizza2026.png","description":"Top-rated for Pizza, based on user votes."}]},"isOpen":true,"type":"F","badgesV2":{"entityBadges":{"imageBased":{"badgeObject":[{"attributes":{"description":"Top-rated for Pizza, based on user votes.","imageId":"brand_cards/Badges%202026/72_Best%20in%20Pizza2026.png","theme":""}}]},"textBased":{},"textExtendedBadges":{}}},"aggregatedDiscountInfoV3":{"header":"ITEMS","subHeader":"AT \u20B959","logoCtx":{"text":"BENEFITS"}},"differentiatedUi":{"displayType":"ADS_UI_DISPLAY_TYPE_ENUM_DEFAULT","differentiatedUiMediaDetails":{"lottie":{},"video":{}}},"reviewsSummary":{},"displayType":"RESTAURANT_DISPLAY_TYPE_DEFAULT","restaurantOfferPresentationInfo":{},"externalRatings":{"aggregatedRating":{"rating":"--"}},"ratingsDisplayPreference":"RATINGS_DISPLAY_PREFERENCE_SHOW_SWIGGY","priceComparisonComms":{}},"analytics":{"context":"seo-data-9c2906a2-6278-4b66-a860-77cabf0c95af"},"cta":{"link":"https://www.swiggy.com/city/muzaffarpur/dominos-pizza-mithanpura-muzaffarpur-rest124439","type":"WEBLINK"}},{"info":{"id":"864544","name":"Wow! China","cloudinaryImageId":"RX_THUMBNAIL/IMAGES/VENDOR/2025/10/22/b742ca55-f94e-4c44-8a54-cb1d33119254_864544.JPG","locality":"Akharaghat Road","areaName":"Shrirampuri","costForTwo":"\u20B9400 for two","cuisines":["Chinese","Asian","fastfood","Beverages","Snacks"],"avgRating":3.7,"parentId":"226836","avgRatingString":"3.7","totalRatingsString":"1.2K+","sla":{"deliveryTime":29,"lastMileTravel":2.1,"serviceability":"SERVICEABLE","slaString":"25-30 mins","lastMileTravelString":"2.1 km","iconType":"ICON_TYPE_EMPTY"},"availability":{"nextCloseTime":"2026-08-26 00:00:00","opened":true},"badges":{"imageBadges":[{"imageId":"brand_cards/Badges%202026/46_Best%20in%20Chinese2026.png","description":"Top-rated for Chinese, based on user votes."}]},"isOpen":true,"type":"F","badgesV2":{"entityBadges":{"imageBased":{"badgeObject":[{"attributes":{"description":"Top-rated for Chinese, based on user votes.","imageId":"brand_cards/Badges%202026/46_Best%20in%20Chinese2026.png","theme":""}}]},"textBased":{},"textExtendedBadges":{}}},"aggregatedDiscountInfoV3":{"header":"70% OFF","subHeader":"UPTO \u20B9140","logoCtx":{"text":"BENEFITS"}},"differentiatedUi":{"displayType":"ADS_UI_DISPLAY_TYPE_ENUM_DEFAULT","differentiatedUiMediaDetails":{"lottie":{},"video":{}}},"reviewsSummary":{},"displayType":"RESTAURANT_DISPLAY_TYPE_DEFAULT","restaurantOfferPresentationInfo":{},"externalRatings":{"aggregatedRating":{"rating":"--"}},"ratingsDisplayPreference":"RATINGS_DISPLAY_PREFERENCE_SHOW_SWIGGY","priceComparisonComms":{}},"analytics":{"context":"seo-data-9c2906a2-6278-4b66-a860-77cabf0c95af"},"cta":{"link":"https://www.swiggy.com/city/muzaffarpur/wow-china-akharaghat-road-shrirampuri-rest864544","type":"WEBLINK"}},{"info":{"id":"864543","name":"Wow! Momo","cloudinaryImageId":"RX_THUMBNAIL/IMAGES/VENDOR/2026/6/25/dd866d07-80dd-49b7-aeef-6e0534aaf80a_864543.JPG","locality":"Akharaghat Road","areaName":"Shrirampuri","costForTwo":"\u20B9300 for two","cuisines":["Momos","Chinese","fastfood","Asian","Beverages"],"avgRating":4.1,"parentId":"1776","avgRatingString":"4.1","totalRatingsString":"1.1K+","sla":{"deliveryTime":26,"lastMileTravel":2.1,"serviceability":"SERVICEABLE","slaString":"25-30 mins","lastMileTravelString":"2.1 km","iconType":"ICON_TYPE_EMPTY"},"availability":{"nextCloseTime":"2026-08-26 00:00:00","opened":true},"badges":{},"isOpen":true,"type":"F","badgesV2":{"entityBadges":{"imageBased":{},"textBased":{},"textExtendedBadges":{}}},"aggregatedDiscountInfoV3":{"header":"70% OFF","subHeader":"UPTO \u20B9140","logoCtx":{"text":"BENEFITS"}},"differentiatedUi":{"displayType":"ADS_UI_DISPLAY_TYPE_ENUM_DEFAULT","differentiatedUiMediaDetails":{"lottie":{},"video":{}}},"reviewsSummary":{},"displayType":"RESTAURANT_DISPLAY_TYPE_DEFAULT","restaurantOfferPresentationInfo":{},"externalRatings":{"aggregatedRating":{"rating":"4.3","ratingCount":"78"},"source":"GOOGLE","sourceIconImageId":"v1704440323/google_ratings/rating_google_tag"},"ratingsDisplayPreference":"RATINGS_DISPLAY_PREFERENCE_SHOW_SWIGGY","priceComparisonComms":{}},"analytics":{"context":"seo-data-9c2906a2-6278-4b66-a860-77cabf0c95af"},"cta":{"link":"https://www.swiggy.com/city/muzaffarpur/wow-momo-akharaghat-road-shrirampuri-rest864543","type":"WEBLINK"}},{"info":{"id":"344277","name":"KFC","cloudinaryImageId":"RX_THUMBNAIL/IMAGES/VENDOR/2026/7/1/0217bcfc-a639-4548-96e4-020c3bd6a754_344277.JPG","locality":"Akharaghat Road","areaName":"Muzaffarpur","costForTwo":"\u20B9400 for two","cuisines":["Burgers","Fast Food","Rolls & Wraps"],"avgRating":4.2,"parentId":"547","avgRatingString":"4.2","totalRatingsString":"6.8K+","sla":{"deliveryTime":27,"lastMileTravel":2.1,"serviceability":"SERVICEABLE","slaString":"25-30 mins","lastMileTravelString":"2.1 km","iconType":"ICON_TYPE_EMPTY"},"availability":{"nextCloseTime":"2026-08-26 00:00:00","opened":true},"badges":{"imageBadges":[{"imageId":"brand_cards/Badges%202026/41_Best%20in%20Burger2026.png","description":"Top-rated for Burger, based on user votes."}]},"isOpen":true,"type":"F","badgesV2":{"entityBadges":{"imageBased":{"badgeObject":[{"attributes":{"description":"Top-rated for Burger, based on user votes.","imageId":"brand_cards/Badges%202026/41_Best%20in%20Burger2026.png","theme":""}}]},"textBased":{},"textExtendedBadges":{}}},"aggregatedDiscountInfoV3":{"header":"50% OFF","discountTag":"FLAT DEAL","logoCtx":{"text":"BENEFITS"}},"differentiatedUi":{"displayType":"ADS_UI_DISPLAY_TYPE_ENUM_DEFAULT","differentiatedUiMediaDetails":{"lottie":{},"video":{}}},"reviewsSummary":{},"displayType":"RESTAURANT_DISPLAY_TYPE_DEFAULT","restaurantOfferPresentationInfo":{},"externalRatings":{"aggregatedRating":{"rating":"--"}},"ratingsDisplayPreference":"RATINGS_DISPLAY_PREFERENCE_SHOW_SWIGGY","priceComparisonComms":{}},"analytics":{"context":"seo-data-9c2906a2-6278-4b66-a860-77cabf0c95af"},"cta":{"link":"https://www.swiggy.com/city/muzaffarpur/kfc-akharaghat-road-muzaffarpur-rest344277","type":"WEBLINK"}},{"info":{"id":"319219","name":"Kwality Wall\'s Ice Cream And More","cloudinaryImageId":"RX_THUMBNAIL/IMAGES/VENDOR/2024/6/13/682f4b20-46b3-4085-b5ac-333022a55ca9_319219.JPG","locality":"Sanjay Cinema Road","areaName":"Muzaffarpur","costForTwo":"\u20B9300 for two","cuisines":["Desserts","Ice Cream","Ice Cream Cakes"],"avgRating":4.5,"veg":true,"parentId":"582","avgRatingString":"4.5","totalRatingsString":"4.2K+","sla":{"deliveryTime":32,"lastMileTravel":4,"serviceability":"SERVICEABLE","slaString":"30-35 mins","lastMileTravelString":"4.0 km","iconType":"ICON_TYPE_EMPTY"},"availability":{"nextCloseTime":"2026-08-25 23:00:00","opened":true},"badges":{"imageBadges":[{"imageId":"v1695133679/badges/Pure_Veg111.png","description":"Serves only 100% vegetarian food, with no non-veg items."}]},"isOpen":true,"type":"F","badgesV2":{"entityBadges":{"imageBased":{"badgeObject":[{"attributes":{"description":"Serves only 100% vegetarian food, with no non-veg items.","imageId":"v1695133679/badges/Pure_Veg111.png","theme":""}}]},"textBased":{},"textExtendedBadges":{}}},"aggregatedDiscountInfoV3":{"header":"20% OFF","subHeader":"UPTO \u20B950","logoCtx":{"text":"BENEFITS"}},"differentiatedUi":{"displayType":"ADS_UI_DISPLAY_TYPE_ENUM_DEFAULT","differentiatedUiMediaDetails":{"lottie":{},"video":{}}},"reviewsSummary":{},"displayType":"RESTAURANT_DISPLAY_TYPE_DEFAULT","restaurantOfferPresentationInfo":{},"externalRatings":{"aggregatedRating":{"rating":"--"}},"ratingsDisplayPreference":"RATINGS_DISPLAY_PREFERENCE_SHOW_SWIGGY","priceComparisonComms":{}},"analytics":{"context":"seo-data-9c2906a2-6278-4b66-a860-77cabf0c95af"},"cta":{"link":"https://www.swiggy.com/city/muzaffarpur/kwality-walls-ice-cream-and-more-sanjay-cinema-road-muzaffarpur-rest319219","type":"WEBLINK"}},{"info":{"id":"119397","name":"Taste Of Kolkata (King Of Biryani And Rolls)","cloudinaryImageId":"npwwpcr91dposzzwnsng","locality":"Motijheel","areaName":"Muzaffarpur","costForTwo":"\u20B9300 for two","cuisines":["Biryani","North Indian","Salads"],"avgRating":4.3,"parentId":"201629","avgRatingString":"4.3","totalRatingsString":"13K+","sla":{"deliveryTime":25,"lastMileTravel":2,"serviceability":"SERVICEABLE","slaString":"25-30 mins","lastMileTravelString":"2.0 km","iconType":"ICON_TYPE_EMPTY"},"availability":{"nextCloseTime":"2026-08-25 23:00:00","opened":true},"badges":{},"isOpen":true,"type":"F","badgesV2":{"entityBadges":{"imageBased":{},"textBased":{},"textExtendedBadges":{}}},"aggregatedDiscountInfoV3":{"header":"70% OFF","subHeader":"UPTO \u20B9140","logoCtx":{"text":"BENEFITS"}},"differentiatedUi":{"displayType":"ADS_UI_DISPLAY_TYPE_ENUM_DEFAULT","differentiatedUiMediaDetails":{"lottie":{},"video":{}}},"reviewsSummary":{},"displayType":"RESTAURANT_DISPLAY_TYPE_DEFAULT","restaurantOfferPresentationInfo":{},"externalRatings":{"aggregatedRating":{"rating":"--"}},"ratingsDisplayPreference":"RATINGS_DISPLAY_PREFERENCE_SHOW_SWIGGY","priceComparisonComms":{}},"analytics":{"context":"seo-data-9c2906a2-6278-4b66-a860-77cabf0c95af"},"cta":{"link":"https://www.swiggy.com/city/muzaffarpur/taste-of-kolkata-king-of-biryani-and-rolls-motijheel-muzaffarpur-rest119397","type":"WEBLINK"}},{"info":{"id":"121982","name":"M/S Milan Restaurant & Conference Hall","cloudinaryImageId":"skpsiaxxnewxmqgsvoyn","locality":"Kalambagh Road","areaName":"Kalambagh Road","costForTwo":"\u20B9600 for two","cuisines":["North Indian","Kebabs","Continental","Biryani","Beverages","Desserts"],"avgRating":4.3,"parentId":"127321","avgRatingString":"4.3","totalRatingsString":"10K+","sla":{"deliveryTime":34,"lastMileTravel":2.3,"serviceability":"SERVICEABLE","slaString":"30-40 mins","lastMileTravelString":"2.3 km","iconType":"ICON_TYPE_EMPTY"},"availability":{"nextCloseTime":"2026-08-25 22:15:00","opened":true},"badges":{"imageBadges":[{"imageId":"brand_cards/Badges%202026/26_Best%20in%20North%20Indian2026.png","description":"Top-rated for North Indian, based on user votes."}]},"isOpen":true,"type":"F","badgesV2":{"entityBadges":{"imageBased":{"badgeObject":[{"attributes":{"description":"Top-rated for North Indian, based on user votes.","imageId":"brand_cards/Badges%202026/26_Best%20in%20North%20Indian2026.png","theme":""}}]},"textBased":{},"textExtendedBadges":{}}},"aggregatedDiscountInfoV3":{"header":"ITEMS","subHeader":"AT \u20B989","logoCtx":{"text":"BENEFITS"}},"differentiatedUi":{"displayType":"ADS_UI_DISPLAY_TYPE_ENUM_DEFAULT","differentiatedUiMediaDetails":{"lottie":{},"video":{}}},"reviewsSummary":{},"displayType":"RESTAURANT_DISPLAY_TYPE_DEFAULT","restaurantOfferPresentationInfo":{},"externalRatings":{"aggregatedRating":{"rating":"--"}},"ratingsDisplayPreference":"RATINGS_DISPLAY_PREFERENCE_SHOW_SWIGGY","priceComparisonComms":{}},"analytics":{"context":"seo-data-9c2906a2-6278-4b66-a860-77cabf0c95af"},"cta":{"link":"https://www.swiggy.com/city/muzaffarpur/m-s-milan-restaurant-and-conference-hall-kalambagh-road-rest121982","type":"WEBLINK"}},{"info":{"id":"548044","name":"Pandey Dhaba And Restaurant","cloudinaryImageId":"ugsar7mlvpuciybucr0d","locality":"Club Road","areaName":"Station Road","costForTwo":"\u20B9300 for two","cuisines":["North Indian","Thalis"],"avgRating":4,"parentId":"329505","avgRatingString":"4.0","totalRatingsString":"2.5K+","sla":{"deliveryTime":35,"lastMileTravel":2.3,"serviceability":"SERVICEABLE","slaString":"35-40 mins","lastMileTravelString":"2.3 km","iconType":"ICON_TYPE_EMPTY"},"availability":{"nextCloseTime":"2026-08-25 23:00:00","opened":true},"badges":{},"isOpen":true,"type":"F","badgesV2":{"entityBadges":{"imageBased":{},"textBased":{},"textExtendedBadges":{}}},"aggregatedDiscountInfoV3":{"header":"\u20B950 OFF","subHeader":"ABOVE \u20B9249","discountTag":"FLAT DEAL","logoCtx":{"text":"BENEFITS"}},"differentiatedUi":{"displayType":"ADS_UI_DISPLAY_TYPE_ENUM_DEFAULT","differentiatedUiMediaDetails":{"lottie":{},"video":{}}},"reviewsSummary":{},"displayType":"RESTAURANT_DISPLAY_TYPE_DEFAULT","restaurantOfferPresentationInfo":{},"externalRatings":{"aggregatedRating":{"rating":"--"}},"ratingsDisplayPreference":"RATINGS_DISPLAY_PREFERENCE_SHOW_SWIGGY","priceComparisonComms":{}},"analytics":{"context":"seo-data-9c2906a2-6278-4b66-a860-77cabf0c95af"},"cta":{"link":"https://www.swiggy.com/city/muzaffarpur/pandey-dhaba-and-restaurant-club-road-station-road-rest548044","type":"WEBLINK"}},{"info":{"id":"433677","name":"Ottimo Pizza","cloudinaryImageId":"wngzfo9yqwo0fiimdbne","locality":"Damuchak Road","areaName":"Chatta Chowk","costForTwo":"\u20B9300 for two","cuisines":["Pizzas","Italian","Chinese","rolls","Burgers"],"avgRating":4.1,"parentId":"261314","avgRatingString":"4.1","totalRatingsString":"992","sla":{"deliveryTime":37,"lastMileTravel":3,"serviceability":"SERVICEABLE","slaString":"35-40 mins","lastMileTravelString":"3.0 km","iconType":"ICON_TYPE_EMPTY"},"availability":{"nextCloseTime":"2026-08-25 22:00:00","opened":true},"badges":{"textExtendedBadges":[{"iconId":"Akash/Listing%20badge.png","shortDescription":"Price Match Promise","fontColor":"#7E808C"}]},"isOpen":true,"type":"F","badgesV2":{"entityBadges":{"imageBased":{},"textBased":{},"textExtendedBadges":{"badgeObject":[{"attributes":{"description":"","fontColor":"#7E808C","iconId":"Akash/Listing%20badge.png","shortDescription":"Price Match Promise"}}]}}},"aggregatedDiscountInfoV3":{"header":"ITEMS","subHeader":"AT \u20B989","logoCtx":{"text":"BENEFITS"}},"differentiatedUi":{"displayType":"ADS_UI_DISPLAY_TYPE_ENUM_DEFAULT","differentiatedUiMediaDetails":{"lottie":{},"video":{}}},"reviewsSummary":{},"displayType":"RESTAURANT_DISPLAY_TYPE_DEFAULT","restaurantOfferPresentationInfo":{},"externalRatings":{"aggregatedRating":{"rating":"--"}},"ratingsDisplayPreference":"RATINGS_DISPLAY_PREFERENCE_SHOW_SWIGGY","priceComparisonComms":{}},"analytics":{"context":"seo-data-9c2906a2-6278-4b66-a860-77cabf0c95af"},"cta":{"link":"https://www.swiggy.com/city/muzaffarpur/ottimo-pizza-damuchak-road-chatta-chowk-rest433677","type":"WEBLINK"}}]}');
+
+},{}]},["kX0ZP","lFTtt"], "lFTtt", "parcelRequire77dd", {}, null, null, "http://localhost:1234")
 
 //# sourceMappingURL=mainIndex.b65b0cb6.js.map
