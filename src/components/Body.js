@@ -1,6 +1,6 @@
 import data from "../data/restro.json";
 import RestroCard from "./RestroCard.js";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const Body = () => {
 
@@ -16,6 +16,17 @@ const Body = () => {
 
     const [allRestro, setFilteredRestro] = useState(data.restaurants); // whatever is passed is the defualt value
 
+    useEffect( () => {
+        // console.log("useEffect called"); // this is the function called after endering the body.
+        fetchData();
+    }, []);
+
+    const fetchData = async () => {
+        const data = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=28.7041&lng=77.1025&page_type=DESKTOP_WEB_LISTING");
+        const jsonData = await data.json();
+        console.log(jsonData);
+        // setFilteredRestro(jsonData.data.cards[1].card.card.gridElements.infoWithStyle.restaurants); // optional chaining is used to avoid errors if any of the properties are undefined or null.
+    };
 
     return (
         <div className="body">

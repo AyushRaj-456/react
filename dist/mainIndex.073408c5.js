@@ -19770,7 +19770,8 @@ const Header = ()=>{
                 className: "logoContainer",
                 children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("img", {
                     className: "logo",
-                    src: (0, _constantsJs.LOGO_URL)
+                    src: (0, _constantsJs.LOGO_URL),
+                    alt: "Logo"
                 }, void 0, false, {
                     fileName: "src/components/Header.js",
                     lineNumber: 7,
@@ -19958,6 +19959,16 @@ const Body = ()=>{
     // changes the filter. We can then use this value to filter the restaurants 
     // displayed on the page.
     const [allRestro, setFilteredRestro] = (0, _react.useState)((0, _restroJsonDefault.default).restaurants); // whatever is passed is the defualt value
+    (0, _react.useEffect)(()=>{
+        // console.log("useEffect called"); // this is the function called after endering the body.
+        fetchData();
+    }, []);
+    const fetchData = async ()=>{
+        const data = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=28.7041&lng=77.1025&page_type=DESKTOP_WEB_LISTING");
+        const jsonData = await data.json();
+        console.log(jsonData);
+    // setFilteredRestro(jsonData.data.cards[1].card.card.gridElements.infoWithStyle.restaurants); // optional chaining is used to avoid errors if any of the properties are undefined or null.
+    };
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
         className: "body",
         children: [
@@ -19966,7 +19977,7 @@ const Body = ()=>{
                 children: " Search "
             }, void 0, false, {
                 fileName: "src/components/Body.js",
-                lineNumber: 22,
+                lineNumber: 33,
                 columnNumber: 13
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
@@ -19979,7 +19990,7 @@ const Body = ()=>{
                 children: "Filter "
             }, void 0, false, {
                 fileName: "src/components/Body.js",
-                lineNumber: 23,
+                lineNumber: 34,
                 columnNumber: 13
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -19989,23 +20000,23 @@ const Body = ()=>{
                         restroInfo: restaurants
                     }, restaurants.info.id, false, {
                         fileName: "src/components/Body.js",
-                        lineNumber: 42,
+                        lineNumber: 53,
                         columnNumber: 33
                     }, undefined);
                 })
             }, void 0, false, {
                 fileName: "src/components/Body.js",
-                lineNumber: 32,
+                lineNumber: 43,
                 columnNumber: 13
             }, undefined)
         ]
     }, void 0, true, {
         fileName: "src/components/Body.js",
-        lineNumber: 21,
+        lineNumber: 32,
         columnNumber: 9
     }, undefined);
 };
-_s(Body, "q5mAANmR1463ZeEfI+oWY3yPrHE=");
+_s(Body, "Jt2sdT1lRK0WPnoenQLmjmAD2ZA=");
 _c = Body;
 exports.default = Body;
 var _c;
