@@ -22,11 +22,25 @@ const Body = () => {
     }, []);
 
     const fetchData = async () => {
-        const data = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=28.7041&lng=77.1025&page_type=DESKTOP_WEB_LISTING");
-        const jsonData = await data.json();
-        console.log(jsonData);
-        // setFilteredRestro(jsonData.data.cards[1].card.card.gridElements.infoWithStyle.restaurants); // optional chaining is used to avoid errors if any of the properties are undefined or null.
+        try {
+            const response = await fetch(
+                "https://www.swiggy.com/mapi/restaurants/list/v5?offset=0&is-seo-homepage-enabled=true&lat=26.11940&lng=85.39620&carousel=true&third_party_vendor=1"
+            );
+
+            if (!response.ok) {
+                throw new Error("Something went wrong: " + response.status);
+                console.log("Error:", response.status);
+            }
+
+            const jsonData = await response.json();
+
+            console.log(jsonData);
+
+        } catch (error) {
+            console.log("Actual error:", error.message);
+        }
     };
+
 
     return (
         <div className="body">
