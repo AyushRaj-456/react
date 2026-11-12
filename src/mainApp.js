@@ -7,7 +7,7 @@ import About from "./components/About.js";
 import Contact from "./components/Contact.js";
 import Error from "./components/Error.js";
 import data from "./data/restro.json" with { type: "json" };
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { Outlet, createBrowserRouter, RouterProvider } from "react-router-dom";
 
 
 
@@ -34,7 +34,7 @@ const AppLayout = () => {
     return (
         <div className="App">
             <Header/>
-            <Body/>
+            <Outlet/>
         </div>
     )
 };
@@ -43,16 +43,23 @@ const AppRouter = createBrowserRouter([
     {
         path: "/",
         element: <AppLayout/>,
+        children : [
+            {
+                path : "/",
+                element : <Body/>,
+            },
+            {
+                path: "/about",
+                element: <About/>,
+            },
+            {
+                path: "/contact",
+                element: <Contact/>,
+            },
+        ],
         errorElement: <Error/>,
     },
-    {
-        path: "/about",
-        element: <About/>,
-    },
-    {
-        path: "/contact",
-        element: <Contact/>,
-    },
+    
 ]);
 
 const root = ReactDOM.createRoot(document.getElementById("root"));

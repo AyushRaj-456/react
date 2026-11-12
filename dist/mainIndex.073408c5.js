@@ -768,7 +768,7 @@ var _reactRouterDom = require("react-router-dom");
                 lineNumber: 36,
                 columnNumber: 13
             }, undefined),
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _bodyJsDefault.default), {}, void 0, false, {
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Outlet), {}, void 0, false, {
                 fileName: "src/mainApp.js",
                 lineNumber: 37,
                 columnNumber: 13
@@ -789,26 +789,36 @@ const AppRouter = (0, _reactRouterDom.createBrowserRouter)([
             lineNumber: 45,
             columnNumber: 18
         }, undefined),
+        children: [
+            {
+                path: "/",
+                element: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _bodyJsDefault.default), {}, void 0, false, {
+                    fileName: "src/mainApp.js",
+                    lineNumber: 49,
+                    columnNumber: 27
+                }, undefined)
+            },
+            {
+                path: "/about",
+                element: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _aboutJsDefault.default), {}, void 0, false, {
+                    fileName: "src/mainApp.js",
+                    lineNumber: 53,
+                    columnNumber: 26
+                }, undefined)
+            },
+            {
+                path: "/contact",
+                element: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _contactJsDefault.default), {}, void 0, false, {
+                    fileName: "src/mainApp.js",
+                    lineNumber: 57,
+                    columnNumber: 26
+                }, undefined)
+            }
+        ],
         errorElement: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _errorJsDefault.default), {}, void 0, false, {
             fileName: "src/mainApp.js",
-            lineNumber: 46,
+            lineNumber: 60,
             columnNumber: 23
-        }, undefined)
-    },
-    {
-        path: "/about",
-        element: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _aboutJsDefault.default), {}, void 0, false, {
-            fileName: "src/mainApp.js",
-            lineNumber: 50,
-            columnNumber: 18
-        }, undefined)
-    },
-    {
-        path: "/contact",
-        element: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _contactJsDefault.default), {}, void 0, false, {
-            fileName: "src/mainApp.js",
-            lineNumber: 54,
-            columnNumber: 18
         }, undefined)
     }
 ]);
@@ -817,7 +827,7 @@ root.render(/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.RouterP
     router: AppRouter
 }, void 0, false, {
     fileName: "src/mainApp.js",
-    lineNumber: 59,
+    lineNumber: 66,
     columnNumber: 13
 }, undefined)); // console.log(data);
 var _c;
