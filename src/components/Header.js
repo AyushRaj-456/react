@@ -1,6 +1,6 @@
 import { useState , useEffect } from "react";
 import { LOGO_URL } from "../utils/constants.js";
-
+import { Link, Outlet } from "react-router-dom";
 
 const Header = () => {
     // let logBtn = "Log In"; use less as it cant get updated normally
@@ -29,9 +29,9 @@ const Header = () => {
 
             <div className="navItems">
                 <ul className="headerLinks">
-                    <li>Home</li>
-                    <li>About Us</li>
-                    <li>Cart</li>
+                    <li> <Link to="/"> Home </Link></li>
+                    <li> <Link to="/about"> About Us </Link></li>
+                    <li> <Link to="/contact"> Contact </Link></li>
                     {/* <li>Login</li> */}
                     <li>
                         <button className="login_btn" onClick={() => {

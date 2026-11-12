@@ -7,7 +7,7 @@ import About from "./components/About.js";
 import Contact from "./components/Contact.js";
 import Error from "./components/Error.js";
 import data from "./data/restro.json" with { type: "json" };
-import { Outlet, createBrowserRouter, RouterProvider } from "react-router-dom";
+import {createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 
 
 
