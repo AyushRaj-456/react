@@ -17,8 +17,8 @@
   "author": "kraken",
   "type": "commonjs",
   "scripts": {
-    "start":"parcel mainIndex.html",
-    "build":"parcel build mainIndex.html",
+    "start": "parcel mainIndex.html",
+    "build": "parcel build mainIndex.html",
     "test": "jest"
   },
   "devDependencies": {
@@ -26,8 +26,7 @@
   },
   "dependencies": {
     "react": "^19.2.8",
-    "react-dom": "^19.2.8"
+    "react-dom": "^19.2.8",
+    "react-router-dom": "^6.30.6"
   }
 }
-
-

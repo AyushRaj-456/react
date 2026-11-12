@@ -3,7 +3,9 @@ import ReactDOM from "react-dom/client";
 import Body from "./components/Body.js";
 import RestroCard from "./components/RestroCard.js";
 import Header from "./components/Header.js";
+import About from "./components/About.js";
 import data from "./data/restro.json" with { type: "json" };
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 
 
@@ -35,7 +37,18 @@ const AppLayout = () => {
     )
 };
 
+const AppRouter = createBrowserRouter([
+    {
+        path: "/",
+        element: <AppLayout/>,
+    },
+    {
+        path: "/about",
+        element: <About/>,
+    },
+]);
+
 const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(<AppLayout/>);
+root.render(<RouterProvider router={AppRouter} />);
 
 // console.log(data);
