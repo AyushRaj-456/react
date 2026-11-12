@@ -19768,6 +19768,18 @@ const Header = ()=>{
     _s();
     // let logBtn = "Log In"; use less as it cant get updated normally
     const [state_btnName, changeBtnName] = (0, _react.useState)("Log In");
+    (0, _react.useEffect)(()=>{
+        console.log("useEffect called");
+    }, [
+        state_btnName
+    ]);
+    // hre [] is a dependency array, if it is not passed in useEffect then the useeffect
+    // will be called after each render of the component.
+    // if we passs empty dependency array, [] then the useEffect 
+    // will be called only once after the first render of the component.
+    // when we pass a variable in the dependency array, 
+    // then the useEffect will be called only when that variable changes. 
+    // In this case, it will be called only when the state_btnName changes.
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
         className: "header",
         children: [
@@ -19779,12 +19791,12 @@ const Header = ()=>{
                     alt: "Logo"
                 }, void 0, false, {
                     fileName: "src/components/Header.js",
-                    lineNumber: 12,
+                    lineNumber: 27,
                     columnNumber: 17
                 }, undefined)
             }, void 0, false, {
                 fileName: "src/components/Header.js",
-                lineNumber: 11,
+                lineNumber: 26,
                 columnNumber: 13
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -19796,21 +19808,21 @@ const Header = ()=>{
                             children: "Home"
                         }, void 0, false, {
                             fileName: "src/components/Header.js",
-                            lineNumber: 17,
+                            lineNumber: 32,
                             columnNumber: 21
                         }, undefined),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
                             children: "About Us"
                         }, void 0, false, {
                             fileName: "src/components/Header.js",
-                            lineNumber: 18,
+                            lineNumber: 33,
                             columnNumber: 21
                         }, undefined),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
                             children: "Cart"
                         }, void 0, false, {
                             fileName: "src/components/Header.js",
-                            lineNumber: 19,
+                            lineNumber: 34,
                             columnNumber: 21
                         }, undefined),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
@@ -19826,33 +19838,33 @@ const Header = ()=>{
                                 ]
                             }, void 0, true, {
                                 fileName: "src/components/Header.js",
-                                lineNumber: 22,
+                                lineNumber: 37,
                                 columnNumber: 25
                             }, undefined)
                         }, void 0, false, {
                             fileName: "src/components/Header.js",
-                            lineNumber: 21,
+                            lineNumber: 36,
                             columnNumber: 21
                         }, undefined)
                     ]
                 }, void 0, true, {
                     fileName: "src/components/Header.js",
-                    lineNumber: 16,
+                    lineNumber: 31,
                     columnNumber: 17
                 }, undefined)
             }, void 0, false, {
                 fileName: "src/components/Header.js",
-                lineNumber: 15,
+                lineNumber: 30,
                 columnNumber: 13
             }, undefined)
         ]
     }, void 0, true, {
         fileName: "src/components/Header.js",
-        lineNumber: 10,
+        lineNumber: 25,
         columnNumber: 9
     }, undefined);
 };
-_s(Header, "CpRnlNb4Oi0edh4KcIbJK1Sawg8=");
+_s(Header, "ScpyvX2xwQRZrai1USq2/A1vXac=");
 _c = Header;
 exports.default = Header;
 var _c;
@@ -19979,6 +19991,8 @@ const Body = ()=>{
     // changes the filter. We can then use this value to filter the restaurants 
     // displayed on the page.
     const [allRestro, setFilteredRestro] = (0, _react.useState)((0, _restroJsonDefault.default).restaurants); // whatever is passed is the defualt value
+    // use sate for searching purpose
+    const [searchText, setsearchText] = (0, _react.useState)("");
     (0, _react.useEffect)(()=>{
         // console.log("useEffect called"); // this is the function called after endering the body.
         fetchData();
@@ -19993,28 +20007,71 @@ const Body = ()=>{
             console.log("Actual error:", error.message);
         }
     };
+    console.log("render");
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
         className: "body",
         children: [
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                className: "searchBar",
-                children: " Search "
-            }, void 0, false, {
+                className: "filter",
+                children: [
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
+                        type: "text",
+                        className: "searchBar",
+                        value: searchText,
+                        onChange: (e)=>{
+                            const filteredList = (0, _restroJsonDefault.default).restaurants;
+                            setFilteredRestro(filteredList); // it is used to update the state of the filtered resto.
+                            setsearchText(e.target.value);
+                        }
+                    }, void 0, false, {
+                        fileName: "src/components/Body.js",
+                        lineNumber: 54,
+                        columnNumber: 17
+                    }, undefined),
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
+                        className: "searchBtn",
+                        onClick: ()=>{
+                            // i have the content enterred by the user in the inout bar, i just have to apply filters accordingly
+                            setFilteredRestro(allRestro.filter((restro)=>{
+                                return restro.info.name.toLowerCase().includes(searchText.toLowerCase());
+                            }));
+                        },
+                        children: " Search "
+                    }, void 0, false, {
+                        fileName: "src/components/Body.js",
+                        lineNumber: 59,
+                        columnNumber: 17
+                    }, undefined),
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
+                        className: "filterBar",
+                        onClick: ()=>{
+                            setFilteredRestro((0, _restroJsonDefault.default).restaurants);
+                            const filteredList = allRestro.filter((restro)=>restro.info.avgRating > 4); // it is used to filed out the resto.
+                            setFilteredRestro(filteredList);
+                        // it is used to update the state of the filtered resto.
+                        },
+                        children: " Filter "
+                    }, void 0, false, {
+                        fileName: "src/components/Body.js",
+                        lineNumber: 69,
+                        columnNumber: 17
+                    }, undefined),
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
+                        className: "resetBtn",
+                        onClick: ()=>{
+                            setFilteredRestro((0, _restroJsonDefault.default).restaurants);
+                            setsearchText("");
+                        },
+                        children: " Reset "
+                    }, void 0, false, {
+                        fileName: "src/components/Body.js",
+                        lineNumber: 79,
+                        columnNumber: 17
+                    }, undefined)
+                ]
+            }, void 0, true, {
                 fileName: "src/components/Body.js",
-                lineNumber: 47,
-                columnNumber: 13
-            }, undefined),
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
-                className: "filterBar",
-                onClick: ()=>{
-                    const filteredList = allRestro.filter((restro)=>restro.info.avgRating > 4); // it is used to filed out the resto.
-                    setFilteredRestro(filteredList);
-                // it is used to update the state of the filtered resto.
-                },
-                children: "Filter "
-            }, void 0, false, {
-                fileName: "src/components/Body.js",
-                lineNumber: 48,
+                lineNumber: 52,
                 columnNumber: 13
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -20024,23 +20081,23 @@ const Body = ()=>{
                         restroInfo: restaurants
                     }, restaurants.info.id, false, {
                         fileName: "src/components/Body.js",
-                        lineNumber: 67,
+                        lineNumber: 95,
                         columnNumber: 33
                     }, undefined);
                 })
             }, void 0, false, {
                 fileName: "src/components/Body.js",
-                lineNumber: 57,
+                lineNumber: 85,
                 columnNumber: 13
             }, undefined)
         ]
     }, void 0, true, {
         fileName: "src/components/Body.js",
-        lineNumber: 46,
+        lineNumber: 50,
         columnNumber: 9
     }, undefined);
 };
-_s(Body, "Jt2sdT1lRK0WPnoenQLmjmAD2ZA=");
+_s(Body, "tEvD1P0eSEamIjQjCmPYkf38rr8=");
 _c = Body;
 exports.default = Body;
 var _c;

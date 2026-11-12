@@ -73,3 +73,9 @@
     display: inline-block;
     /* width: 33px; */
 }
+
+.filterContainer{
+    display: flex;
+    justify-content: space-between;
+    margin: 5px;
+}

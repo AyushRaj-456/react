@@ -15,6 +15,10 @@ const Body = () => {
     // displayed on the page.
 
     const [allRestro, setFilteredRestro] = useState(data.restaurants); // whatever is passed is the defualt value
+    // use sate for searching purpose
+    const [searchText, setsearchText] = useState("");
+
+
 
     useEffect( () => {
         // console.log("useEffect called"); // this is the function called after endering the body.
@@ -41,19 +45,43 @@ const Body = () => {
         }
     };
 
-
+    console.log("render");
     return (
         <div className="body">
-            <div className="searchBar"> Search </div>
-            <button className="filterBar" onClick={() => {
-                const filteredList = allRestro.filter(
-                    (restro) => restro.info.avgRating > 4
-                ); // it is used to filed out the resto.
+            
+            <div className = "filter">
 
-                setFilteredRestro(filteredList); 
-                // it is used to update the state of the filtered resto.
-            }}>
-                Filter </button>
+                <input type="text"  className="searchBar" value={searchText} onChange={(e) => {
+                    const filteredList = data.restaurants;
+                    setFilteredRestro(filteredList); // it is used to update the state of the filtered resto.
+                    setsearchText(e.target.value);
+                }}/>
+                <button className="searchBtn" onClick={() =>{
+                    
+                    // i have the content enterred by the user in the inout bar, i just have to apply filters accordingly
+                    setFilteredRestro(allRestro.filter((restro) => {
+                        return restro.info.name.toLowerCase().includes(searchText.toLowerCase());
+                    }));
+
+                }}> Search </button>
+
+
+                <button className="filterBar" onClick={() => {
+                    setFilteredRestro(data.restaurants);
+                    const filteredList = allRestro.filter(
+                        (restro) => restro.info.avgRating > 4
+                    ); // it is used to filed out the resto.
+
+                    setFilteredRestro(filteredList); 
+                    // it is used to update the state of the filtered resto.
+                }}> Filter </button>
+
+                <button className="resetBtn" onClick={() => {
+                    setFilteredRestro(data.restaurants);
+                    setsearchText("");
+                }}> Reset </button>
+
+            </div>
             <div className="restroContainer">
                 {/* currently i am passing dummy data...
                 but we can get data from the api as an object or an array of object and by passing that 

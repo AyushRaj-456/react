@@ -63,4 +63,10 @@
   font-size: 9px;
   display: inline-block;
 }
+
+.filterContainer {
+  justify-content: space-between;
+  margin: 5px;
+  display: flex;
+}
 /*# sourceMappingURL=mainIndex.9c43dbcb.css.map */
